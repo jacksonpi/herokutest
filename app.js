@@ -3,11 +3,14 @@ const express = require('express') //npm install --save express
 const handlebars = require('express-handlebars')//npm install --save express-handlebars
 const bodyParser = require('body-parser')//npm install --save body-parser
 const admim = require("./router/admim")
+const usuarios = require("./router/usuarios")
 const path = require("path")
 const flash = require("connect-flash")//npm install --save connect-flash
 const session = require("express-session")//npm install --save express-session
 const app = express()
 const mongoose = require('mongoose')
+const passport = require("passport")
+require("./config/auth")(passport)
 const db = require("./config/db")
 
 //Session
@@ -16,6 +19,9 @@ app.use(session({
     resave:true,
     saveUninitialized:true
   }))
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 //MidleWare
 app.use(flash())
@@ -53,6 +59,7 @@ app.get('/',(req,res)=>{
   })
 
 app.use('/admim',admim)
+app.use('/usuarios',usuarios)
 
 //Outros
 const PORT = process.env.PORT || 8081
