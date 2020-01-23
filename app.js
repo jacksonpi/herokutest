@@ -7,6 +7,8 @@ const path = require("path")
 const flash = require("connect-flash")//npm install --save connect-flash
 const session = require("express-session")//npm install --save express-session
 const app = express()
+const mongoose = require('mongoose')
+const db = require("./config/db")
 
 //Session
 app.use(session({
@@ -17,7 +19,7 @@ app.use(session({
 
 //MidleWare
 app.use(flash())
-  //MidleWare
+
   app.use((req,res,next)=>{
     res.locals.success_msg = req.flash("success_msg")
     res.locals.error_msg = req.flash("error_msg")
@@ -32,7 +34,15 @@ app.use(bodyParser.json())
 
 //Haldlebars
 app.engine('handlebars',handlebars({defaultLayout:'main'}))
-  app.set('view engine','handlebars')
+app.set('view engine','handlebars')
+
+//Mongoose
+mongoose.Promise = global.Promise
+mongoose.connect(db.mongoURI).then(()=>{
+  console.log("Banco de Dados Conectado!")
+}).catch((erro)=>{
+  console.log("Erro ao conectar:"+erro)
+})
 
 //Public
 app.use(express.static(path.join(__dirname,"public"))) //dirname pega o diretório absoluto

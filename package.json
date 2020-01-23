@@ -1,18 +1,15 @@
 {
-  "name": "blog",
+  "name": "herokutest",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "express": "^4.17.1",
-    "express-session": "^1.16.2",
+    "express-session": "^1.17.0",
     "express-handlebars": "^3.1.0",
-    "mongoose": "^5.6.0",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "mongoose": "^5.8.9"
   },
   "devDependencies": {},
   "scripts": {
@@ -21,12 +18,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jacksonpi/blog.git"
+    "url": "git+https://github.com/jacksonpi/herokutest.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jacksonpi/blog/issues"
+    "url": "https://github.com/jacksonpi/herokutest/issues"
   },
-  "homepage": "https://github.com/jacksonpi/blog#readme"
+  "homepage": "https://github.com/jacksonpi/herokutest#readme"
 }
